@@ -23,24 +23,24 @@ public class AccountService {
     }
 
     //Deposit money in account
-    public void depositMoney(Long id, double amount) throws BankAccountException {
+    public Account depositMoney(Long id, double amount) throws BankAccountException {
         Account account = accountRepository.findAccountById(id);
         if (account != null) {
             account.setBalance(account.getBalance() + amount);
-            accountRepository.save(account);
+            return accountRepository.save(account);
         } else {
             throw new BankAccountException("Account not found");
         }
     }
 
     //Withdraw money from account
-    public void withdrawMoney(Long id, double amount) throws BankAccountException {
+    public Account withdrawMoney(Long id, double amount) throws BankAccountException {
         Account account = accountRepository.findAccountById(id);
         if (account != null) {
             double balance = account.getBalance();
             if (balance >= amount & balance >= 0) {
                 account.setBalance(account.getBalance() - amount);
-                accountRepository.save(account);
+                return accountRepository.save(account);
             } else {
                 throw new BankAccountException("Insufficient funds");
             }

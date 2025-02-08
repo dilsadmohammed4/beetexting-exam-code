@@ -19,12 +19,12 @@ public class AccountController {
     }
 
     @PostMapping("/{id}/deposit")
-    public void depositMoneyInAccount(@PathVariable Long id, @RequestParam double amount) throws BankAccountException {
-        accountService.depositMoney(id, amount);
+    public Account depositMoneyInAccount(@PathVariable Long id, @RequestParam double amount) throws BankAccountException {
+        return accountService.depositMoney(id, amount);
     }
 
     @PostMapping("/{id}/withdraw")
-    public void withdrawMoneyFromAccount(@PathVariable Long id, @RequestParam double amount) throws BankAccountException {
-        accountService.withdrawMoney(id, amount);
+    public Account withdrawMoneyFromAccount(@PathVariable Long id, @RequestParam double amount) throws BankAccountException {
+        return accountService.withdrawMoney(id, amount);
     }
 }
