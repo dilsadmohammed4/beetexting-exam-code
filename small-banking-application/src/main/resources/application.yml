@@ -1,0 +1,8 @@
+spring:
+  application:
+    name: small-banking-application
+  data:
+    mongodb:
+      authentication-database: admin
+      uri: mongodb://localhost:27017/bank-db
+      auto-index-creation: true
